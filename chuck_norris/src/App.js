@@ -8,8 +8,6 @@ import Jokes from './components/Jokes';
 
 class App extends Component {
   componentDidMount() {
-    axios.get('https://api.chucknorris.io/jokes/random')
-      .then(res => console.log('Chuck Norris response -> ', res.value));
     axios.get('https://api.chucknorris.io/jokes/categories')
       .then(res => console.log('joke categories: ', res.data));
   }
