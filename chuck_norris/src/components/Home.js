@@ -4,7 +4,8 @@ import axios from 'axios';
 class Home extends Component {
   componentDidMount() {
     axios.get('https://api.chucknorris.io/jokes/random')
-      .then(res => console.log('Chuck Norris random joke -> ', res.data.value, res));
+      .then(res => console.log('Chuck Norris random joke -> ', res.data.value, res))
+      .catch(err => console.error(err));
   }
 
   render () {

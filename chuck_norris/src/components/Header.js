@@ -10,7 +10,6 @@ class Header extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   onMenuClick() {
-    console.log('toggle drawer');
     this.setState({ open: !this.state.open });
   }
 
