@@ -32,7 +32,7 @@ registerServiceWorker();
 10. Save your work and push these changes to Bitbucket.
 
 ## Routing
-1. Create a new branch called `retrieving` and checkout this branch.
+1. Create a new branch called `routing` and checkout this branch.
 2. Create a new folder inside of your `src` folder called `components`. All future component files should be created in this folder.
 3. Set up React Router with the following routes:
   * '/' - the main (landing) page
