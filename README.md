@@ -15,8 +15,8 @@ To more easily showcase your React skill, after each component section you will 
   * react-router-dom
 
 6. Add this import to your index.js file: 
-  `import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';`
-More information is available for use of `material-ui` at [http://www.material-ui.com/#/](http://www.material-ui.com/#/).
+  `import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';`  
+  More information is available for use of `material-ui` at [http://www.material-ui.com/#/](http://www.material-ui.com/#/).
 7. Wrap the `<App />` tag inside of `<MuiThemeProvider>` tags.
 ```
 const MyApp = () => (
