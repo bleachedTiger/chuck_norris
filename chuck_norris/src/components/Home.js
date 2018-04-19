@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+import {Card, CardActions, CardMedia, CardText, FlatButton} from 'material-ui';
 
 class Home extends Component {
   componentDidMount() {
@@ -8,13 +10,31 @@ class Home extends Component {
       .catch(err => console.error(err));
   }
 
+  handleClick(option) {
+    this.props.history.push(`/${option}`);
+  }
+
   render () {
     return (
       <div>
-        Home
+        <Card>
+          <CardMedia>
+            <img src="https://assets.chucknorris.host/img/chucknorris_logo_coloured_small.png" alt="" />
+          </CardMedia>
+          <CardText>
+          We love Chuck Norris jokes and you'll find a collection of those jokes here. You can search for
+          a joke by category or by any specific term. To see the different categories of jokes click on the
+          Categories button or select Categories from the Menu. To search for a joke click on the Jokes button
+          or select Jokes from the Menu.
+          </CardText>
+          <CardActions>
+            <FlatButton label="Categories" primary={true} onClick={() => this.handleClick('categories')} />
+            <FlatButton label="Jokes" primary={true} onClick={() => this.handleClick('jokes')} />
+          </CardActions>
+        </Card>
       </div>
     )
   }
 }
 
-export default Home;
+export default withRouter(Home);
