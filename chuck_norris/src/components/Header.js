@@ -14,14 +14,14 @@ class Header extends Component {
   }
 
   handleClick(option) {
-    this.setState({ open: !this.state.open });
+    this.setState({ open: false });
     this.props.history.push(`/${option}`);
   }
 
   render() {
     return (
       <div>
-        <AppBar title="Chuck Norris Jokes" onLeftIconButtonClick={() => this.onMenuClick()} />
+        <AppBar title="Chuck Norris Jokes" onLeftIconButtonClick={() => this.onMenuClick()} onTitleClick={() => this.handleClick('')} />
         <Drawer open={this.state.open} onClick={() => this.setState({ open: !this.state.open })}>
           <MenuItem onClick={() => this.handleClick('')}>Home</MenuItem>
           <MenuItem onClick={() => this.handleClick('categories')}>Categories</MenuItem>

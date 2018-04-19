@@ -43,7 +43,7 @@ class Categories extends Component {
       <Card>
         <CardHeader
           title="Joke Categories"
-          subtitle="(click for full list)"
+          subtitle="(click to toggle list)"
           actAsExpander={true}
           showExpandableButton={true}
         />
@@ -51,7 +51,7 @@ class Categories extends Component {
           <FlatButton primary={true} label="Jokes" onClick={() => this.props.history.push('/jokes')} />
           <FlatButton primary={true} label="Home" onClick={() => this.props.history.push('/')} />
         </CardActions>
-        <CardText expandable={true}>
+        <CardText  initiallyExpanded={true} expandable={true}>
           <List>
             {this.displayJokes()}
           </List>
