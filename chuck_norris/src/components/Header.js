@@ -26,6 +26,7 @@ class Header extends Component {
           <MenuItem onClick={() => this.handleClick('')}>Home</MenuItem>
           <MenuItem onClick={() => this.handleClick('categories')}>Categories</MenuItem>
           <MenuItem onClick={() => this.handleClick('jokes')}>Jokes</MenuItem>
+          <MenuItem onClick={() => this.handleClick('viewed')}>Viewed Jokes</MenuItem>
         </Drawer>
       </div>
     )

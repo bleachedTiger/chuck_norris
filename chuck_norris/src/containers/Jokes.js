@@ -36,6 +36,7 @@ class Jokes extends Component {
   handleClick(joke) {
     this.setState({ joke, open: true });
     this.props.selectedJoke(joke);
+    this.props.viewedJokes(joke);
   }
 
   displayJokes() {

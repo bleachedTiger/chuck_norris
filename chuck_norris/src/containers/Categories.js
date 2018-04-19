@@ -7,6 +7,7 @@ import OneJoke from '../components/OneJoke';
 import { bindActionCreators } from 'redux';
 import { categoriesList } from '../actions/categories';
 import { selectedJoke } from '../actions/joke';
+import { viewedJokes } from '../actions/viewedJokes';
 
 
 class Categories extends Component {
@@ -30,9 +31,11 @@ class Categories extends Component {
   getRandomJoke(category) {
     axios.get(`https://api.chucknorris.io/jokes/random?category=${category}`)
       .then(res => {
-        if (res.data) {
-          this.setState({ joke: res.data, open: true });
-          this.props.selectedJoke(res.data);
+        const joke = res.data;
+        if (joke) {
+          this.setState({ joke: joke, open: true });
+          this.props.selectedJoke(joke);
+          this.props.viewedJokes(joke);
         }
       })
       .catch((err) => console.error(err));
@@ -55,7 +58,7 @@ class Categories extends Component {
         />
         <CardActions>
           <FlatButton primary={true} label="Jokes" onClick={() => this.props.history.push('/jokes')} />
-          <FlatButton primary={true} label="Home" onClick={() => this.props.history.push('/')} />
+          <FlatButton primary={true} label="Viewed" onClick={() => this.props.history.push('/viewed')} />
         </CardActions>
         <CardText expandable={true}>
           <List>
@@ -81,7 +84,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ categoriesList, selectedJoke }, dispatch);
+  return bindActionCreators({ categoriesList, selectedJoke, viewedJokes }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Categories));

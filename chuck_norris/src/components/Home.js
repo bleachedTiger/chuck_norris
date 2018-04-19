@@ -23,6 +23,7 @@ class Home extends Component {
           <CardActions>
             <FlatButton label="Categories" primary={true} onClick={() => this.handleClick('categories')} />
             <FlatButton label="Jokes" primary={true} onClick={() => this.handleClick('jokes')} />
+            <FlatButton label="Viewed" primary={true} onClick={() => this.handleClick('viewed')} />
           </CardActions>
         </Card>
       </div>

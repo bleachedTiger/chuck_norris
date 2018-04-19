@@ -1,5 +1,5 @@
 export function viewedJokes(joke = {}) {
-  console.log('viewed jokes action');
+  console.log('ACTION -> viewed jokes');
   return {
     type: 'VIEWED_JOKE',
     payload: joke

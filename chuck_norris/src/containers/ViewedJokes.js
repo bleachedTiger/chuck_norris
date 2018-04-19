@@ -4,7 +4,8 @@ import { Avatar, Card, List, ListItem } from 'material-ui';
 
 class ViewedJokes extends Component {
   renderJokes() {
-    return this.props.ViewedJokes.map(joke => (
+    console.log('viewed props ->', this.props.viewedJokes);
+    return this.props.viewedJokes.map(joke => (
       <ListItem
         key={joke.id}
         primaryText={joke.value}
@@ -22,7 +23,7 @@ class ViewedJokes extends Component {
 
 function mapStateToProps(state) {
   return {
-    ViewedJokes: state.ViewedJokes
+    viewedJokes: state.viewedJokes.viewedJokes
   };
 }
 

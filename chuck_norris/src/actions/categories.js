@@ -1,5 +1,5 @@
 export function categoriesList(categories = []) {
-  console.log('categories action', categories);
+  console.log('ACTION -> categories', categories);
   return {
     type: 'CATEGORIES_LIST',
     payload: categories
