@@ -4,7 +4,9 @@ import { Avatar, Card, List, ListItem } from 'material-ui';
 
 class ViewedJokes extends Component {
   renderJokes() {
-    console.log('viewed props ->', this.props.viewedJokes);
+    if (this.props.viewedJokes.length === 0) {
+      return <ListItem primaryText='You have not viewed any jokes yet!' />
+    }
     return this.props.viewedJokes.map(joke => (
       <ListItem
         key={joke.id}

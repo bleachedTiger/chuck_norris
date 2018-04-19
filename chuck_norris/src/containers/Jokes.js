@@ -28,6 +28,8 @@ class Jokes extends Component {
       .then(res => {
         if (res.data.result.length > 0) {
           this.setState({ jokes: res.data.result })
+        } else {
+          this.setState({ jokes: [{id: 1, value: 'No jokes in that category, sorry!', icon_url: ''} ]});
         }
       })
       .catch(err => console.error(err));
@@ -45,7 +47,7 @@ class Jokes extends Component {
         key={joke.id}
         primaryText={joke.value}
         leftAvatar={<Avatar src={joke.icon_url} />}
-        onClick={() => this.setState({ joke, open: true })}
+        onClick={() => this.handleClick(joke)}
       />
     ))
   }
@@ -79,9 +81,7 @@ class Jokes extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    selectedJoke,
-    viewedJokes
-  });
+  return bindActionCreators({ selectedJoke, viewedJokes }, dispatch);
 }
+
 export default connect(null, mapDispatchToProps)(withRouter(Jokes));

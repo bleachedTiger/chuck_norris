@@ -14,7 +14,6 @@ class Categories extends Component {
   constructor(props) {
     super(props);
     this.state = ({ categories: [], joke: {}, open: false })
-    // this.displayJokes = this.displayJokes.bind(this);
   }
 
   componentDidMount() {
@@ -69,7 +68,7 @@ class Categories extends Component {
           open={this.state.open}
           onRequestClose={() => this.setState({ open: false })}
         >
-          <OneJoke joke={this.state.joke} />
+          <OneJoke joke={this.props.joke} />
         </Dialog>
       </Card>
     );
@@ -78,8 +77,8 @@ class Categories extends Component {
 
 function mapStateToProps(state) {
   return {
-    joke: state.joke,
-    categories: state.categories
+    joke: state.joke.joke,
+    categories: state.categories.categories
   };
 }
 

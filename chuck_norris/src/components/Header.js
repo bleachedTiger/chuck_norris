@@ -23,7 +23,6 @@ class Header extends Component {
       <div>
         <AppBar title="Chuck Norris Jokes" onLeftIconButtonClick={() => this.onMenuClick()} onTitleClick={() => this.handleClick('')} />
         <Drawer open={this.state.open} onClick={() => this.setState({ open: !this.state.open })}>
-          <MenuItem onClick={() => this.handleClick('')}>Home</MenuItem>
           <MenuItem onClick={() => this.handleClick('categories')}>Categories</MenuItem>
           <MenuItem onClick={() => this.handleClick('jokes')}>Jokes</MenuItem>
           <MenuItem onClick={() => this.handleClick('viewed')}>Viewed Jokes</MenuItem>
