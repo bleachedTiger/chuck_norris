@@ -13,6 +13,8 @@ To more easily showcase your React skill, after each component section you will 
   * axios
   * material-ui
   * react-router-dom
+  * react-redux
+  * redux
 
 6. Add this import to your index.js file: 
   `import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';`  
@@ -53,11 +55,30 @@ registerServiceWorker();
   * fetch a list of all the joke categories and display them in a list 
   * The api endpoint to get the joke categories is: [https://api.chucknorris.io/jokes/categories](https://api.chucknorris.io/jokes/categories)
   * Make each category in the list clickable
-  * When a category is clicked it should show a random joke from that category (ex: open a dialog with joke)
+  * When a category is clicked it should show a random joke from that category (ex: open a dialog with a joke)
 
 4. On the `Jokes` page:
   * Create a search bar with a submit button
   * When a search term is submitted you should fetch jokes from this api endpoint: [https://api.chucknorris.io/jokes/search?query={query}](https://api.chucknorris.io/jokes/search?query={query})
   * Display the results of the search query in a list
   * Each listed joke should be clickable
-  * When a joke is selected it should be displayed (ex: open a dialog with joke)
+  * When a joke is selected it should be displayed (ex: open a dialog the joke)
+
+5. Save your work and push these changes to Bitbucket
+
+## Flux / Redux
+1. Create a new branch called `redux` and checkout this branch.
+2. Refactor your app to use Redux and a Redux Store.
+3. Create your appliction state in Redux to have the following model structure:
+```
+  {
+    joke: { id: '{joke_id}'}, text: '{joke_text}', icon: '{joke_icon_url}' }
+    categories: [ 'category_1', 'category_2', 'etc...' ],
+    viewedJokes: [ joke_1, joke_2, etc... ]
+  }
+```
+4. Create 3 Reducers for the above data model: `joke`, `jokes`, and `viewedJokes`.
+5. Create actions to coorespond with the above data model.
+6. Implement `connect`, `mapStateToProps` and `mapDispatchToProps` on your `Categories` page so that each joke that is selected is added to the `viewedJokes` object in the Redux Store.  
+  Extra credit: connect the list of categories and each joke into props
+7. Create a new page, on a new route `/viewed` that will display all of the jokes that the user has looked at (selected).

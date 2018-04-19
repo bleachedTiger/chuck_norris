@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/Home';
-import Categories from './components/Categories';
-import Jokes from './components/Jokes';
+import Categories from './containers/Categories';
+import Jokes from './containers/Jokes';
+import ViewedJokes from './containers/ViewedJokes';
 
 const styles = {
   display: 'flex',
@@ -23,6 +24,7 @@ class App extends Component {
         <Route path='/' exact component={Home} />
         <Route path='/categories' component={Categories} />
         <Route path='/jokes' exact component={Jokes} />
+        <Route path='/viewed' component={ViewedJokes} />
       </div>
     );
   }

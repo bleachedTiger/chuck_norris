@@ -3,7 +3,11 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { Avatar, Card, Dialog, TextField, FloatingActionButton, List, ListItem } from 'material-ui';
 import ContentSearch from 'material-ui/svg-icons/action/search';
-import OneJoke from './OneJoke';
+import OneJoke from '../components/OneJoke';
+import { selectedJoke } from '../actions/joke';
+import { viewedJokes } from '../actions/viewedJokes';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 const cardStyles = {
   padding: 10
@@ -27,6 +31,11 @@ class Jokes extends Component {
         }
       })
       .catch(err => console.error(err));
+  }
+
+  handleClick(joke) {
+    this.setState({ joke, open: true });
+    this.props.selectedJoke(joke);
   }
 
   displayJokes() {
@@ -68,4 +77,10 @@ class Jokes extends Component {
   } 
 }
 
-export default withRouter(Jokes);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    selectedJoke,
+    viewedJokes
+  });
+}
+export default connect(null, mapDispatchToProps)(withRouter(Jokes));

@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {Card, CardActions, CardHeader, CardText, Dialog, FlatButton, List, ListItem} from 'material-ui';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import OneJoke from './OneJoke';
+import OneJoke from '../components/OneJoke';
+import { bindActionCreators } from 'redux';
+import { categoriesList } from '../actions/categories';
+import { selectedJoke } from '../actions/joke';
 
 
 class Categories extends Component {
   constructor(props) {
     super(props);
     this.state = ({ categories: [], joke: {}, open: false })
-    this.displayJokes = this.displayJokes.bind(this);
+    // this.displayJokes = this.displayJokes.bind(this);
   }
 
   componentDidMount() {
@@ -17,6 +21,7 @@ class Categories extends Component {
       .then(res => {
         if (res.data.length > 0) {
           this.setState({ categories: res.data });
+          this.props.categoriesList(res.data);
         }
       })
       .catch(err => console.error(err));
@@ -26,7 +31,8 @@ class Categories extends Component {
     axios.get(`https://api.chucknorris.io/jokes/random?category=${category}`)
       .then(res => {
         if (res.data) {
-          this.setState({ joke: res.data, open: true })
+          this.setState({ joke: res.data, open: true });
+          this.props.selectedJoke(res.data);
         }
       })
       .catch((err) => console.error(err));
@@ -51,7 +57,7 @@ class Categories extends Component {
           <FlatButton primary={true} label="Jokes" onClick={() => this.props.history.push('/jokes')} />
           <FlatButton primary={true} label="Home" onClick={() => this.props.history.push('/')} />
         </CardActions>
-        <CardText  initiallyExpanded={true} expandable={true}>
+        <CardText expandable={true}>
           <List>
             {this.displayJokes()}
           </List>
@@ -67,4 +73,15 @@ class Categories extends Component {
   }
 }
 
-export default withRouter(Categories);
+function mapStateToProps(state) {
+  return {
+    joke: state.joke,
+    categories: state.categories
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ categoriesList, selectedJoke }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Categories));
